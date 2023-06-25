@@ -39,12 +39,17 @@ namespace BookStore.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<Book>> Update([FromRoute] int id, Book book)
+        public async Task<ActionResult<Book>> Update(int id, Book book)
         {
+            if (id != book.Id)
+            {
+                return BadRequest("Id mismatch");
+            }
+
             var result = await _bookRepository.Update(id, book);
             if (result == null)
             {
-                return NotFound();
+                return NoContent();
             }
             return result;
         }

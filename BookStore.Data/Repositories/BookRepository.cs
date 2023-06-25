@@ -64,7 +64,13 @@ namespace BookStore.Data.Repositories
                 {
                     return null;
                 }
-                _appDbContext.Books.Update(book);
+                result.Author = book.Author;
+                result.CallNumber = book.CallNumber;
+                result.IsAvailable = book.IsAvailable;
+                result.PublicationYear = book.PublicationYear;
+                result.Title = book.Title;
+
+                _appDbContext.Books.Update(result);
                 await _appDbContext.SaveChangesAsync();
 
                 return result;
