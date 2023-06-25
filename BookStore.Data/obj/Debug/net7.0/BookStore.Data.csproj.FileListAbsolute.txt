@@ -1,0 +1,14 @@
+/Users/Osigbemes/Projects/BookStore/BookStore.Data/bin/Debug/net7.0/BookStore.Data.deps.json
+/Users/Osigbemes/Projects/BookStore/BookStore.Data/bin/Debug/net7.0/BookStore.Data.runtimeconfig.json
+/Users/Osigbemes/Projects/BookStore/BookStore.Data/bin/Debug/net7.0/BookStore.Data.dll
+/Users/Osigbemes/Projects/BookStore/BookStore.Data/bin/Debug/net7.0/BookStore.Data.pdb
+/Users/Osigbemes/Projects/BookStore/BookStore.Data/obj/Debug/net7.0/BookStore.Data.csproj.AssemblyReference.cache
+/Users/Osigbemes/Projects/BookStore/BookStore.Data/obj/Debug/net7.0/BookStore.Data.GeneratedMSBuildEditorConfig.editorconfig
+/Users/Osigbemes/Projects/BookStore/BookStore.Data/obj/Debug/net7.0/BookStore.Data.AssemblyInfoInputs.cache
+/Users/Osigbemes/Projects/BookStore/BookStore.Data/obj/Debug/net7.0/BookStore.Data.AssemblyInfo.cs
+/Users/Osigbemes/Projects/BookStore/BookStore.Data/obj/Debug/net7.0/BookStore.Data.csproj.CoreCompileInputs.cache
+/Users/Osigbemes/Projects/BookStore/BookStore.Data/obj/Debug/net7.0/BookStore.Data.dll
+/Users/Osigbemes/Projects/BookStore/BookStore.Data/obj/Debug/net7.0/refint/BookStore.Data.dll
+/Users/Osigbemes/Projects/BookStore/BookStore.Data/obj/Debug/net7.0/BookStore.Data.pdb
+/Users/Osigbemes/Projects/BookStore/BookStore.Data/obj/Debug/net7.0/BookStore.Data.genruntimeconfig.cache
+/Users/Osigbemes/Projects/BookStore/BookStore.Data/obj/Debug/net7.0/ref/BookStore.Data.dll
