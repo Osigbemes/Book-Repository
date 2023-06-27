@@ -10,6 +10,8 @@ namespace BookStore.Data.Interfaces
 		Task<Book> Add(Book book);
         Task<Book> Update(int id, Book book);
         Task Delete(int id);
+		public Task<List<Book>> GetBookByAuthor(string authorName);
+        public Task<List<Book>> GetAllAvailableBooks();
     }
 }
 

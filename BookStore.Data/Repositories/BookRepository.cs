@@ -91,6 +91,35 @@ namespace BookStore.Data.Repositories
             }
             
         }
+
+        public async Task<List<Book>> GetBookByAuthor(string authorName)
+        {
+            try
+            {
+                var books = await _appDbContext.Books.Where(a => a.Author == authorName).ToListAsync();
+                if (books.Count <= 0)
+                {
+                    return null;
+                }
+                return books;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<List<Book>> GetAllAvailableBooks()
+        {
+            try
+            {
+                return await _appDbContext.Books.Where(a => a.IsAvailable == true).ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
 

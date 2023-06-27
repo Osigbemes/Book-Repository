@@ -27,7 +27,7 @@ namespace BookStore.Controllers
             return result;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<ActionResult<Book>> Get(int id)
         {
             var book = await _bookRepository.Get(id);
@@ -36,6 +36,28 @@ namespace BookStore.Controllers
                 return NotFound();
             }
             return book;
+        }
+
+        [HttpGet("{authorName}")]
+        public async Task<ActionResult<IEnumerable<Book>>> GetBooksByAuthorname(string authorName)
+        {
+            var books = await _bookRepository.GetBookByAuthor(authorName);
+            if (books == null || books.Count<=0)
+            {
+                return NotFound();
+            }
+            return books;
+        }
+
+        [HttpGet("getallavaialablebooks")]
+        public async Task<ActionResult<IEnumerable<Book>>> GetAllAvailableBooks()
+        {
+            var books = await _bookRepository.GetAllAvailableBooks();
+            if (books == null || books.Count <= 0)
+            {
+                return NotFound();
+            }
+            return books;
         }
 
         [HttpPut("{id}")]
