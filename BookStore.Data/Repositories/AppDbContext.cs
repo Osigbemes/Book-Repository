@@ -1,11 +1,12 @@
 ﻿using System;
 using BookStore.Data.Interfaces;
 using BookStore.Data.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookStore.Data.Repositories
 {
-	public class AppDbContext:DbContext, IAppDbContext
+	public class AppDbContext: IdentityDbContext<User>, IAppDbContext
 	{
 		public AppDbContext(DbContextOptions<AppDbContext> options):base (options)
 		{

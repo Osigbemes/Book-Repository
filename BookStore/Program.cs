@@ -1,5 +1,7 @@
 ﻿using BookStore.Data.Interfaces;
+using BookStore.Data.Models;
 using BookStore.Data.Repositories;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -16,6 +18,10 @@ builder.Services.AddScoped<IAppDbContext>(provider => provider.GetService<AppDbC
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DBConnection")));
+
+// Add ASP.NET Core Identity
+builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders(); ;
 
 var app = builder.Build();
 
