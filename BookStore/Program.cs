@@ -17,7 +17,7 @@ builder.Services.AddTransient<IBookRepository, BookRepository>();
 builder.Services.AddScoped<IAppDbContext>(provider => provider.GetService<AppDbContext>());
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DBConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DBConnection"), b => b.MigrationsAssembly("BookStore")));
 
 // Add ASP.NET Core Identity
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
