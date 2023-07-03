@@ -9,6 +9,14 @@ namespace BookStore.Data.Repositories
             Messages = messages.ToArray();
         }
 
+        internal Results(bool succeeded,string message, int count,IEnumerable<object> entity)
+        {
+            Succeeded = succeeded;
+            Message = message;
+            Entity = entity;
+            Count = count;
+        }
+
         internal Results(bool succeeded, string message)
         {
             Succeeded = succeeded;
@@ -28,7 +36,8 @@ namespace BookStore.Data.Repositories
             Entity = result;
         }
         public object Entity { get; set; }
-		public string Message { get; set; }
+        public int Count { get; set; }
+        public string Message { get; set; }
 		public string[] Messages { get; set; }
 		public bool Succeeded { get; set; }
 
@@ -36,6 +45,10 @@ namespace BookStore.Data.Repositories
 		{
             return new Results(true, message);
 		}
+        public static Results Success(object entity)
+        {
+            return new Results(true, entity);
+        }
         public static Results Failure(string message)
         {
             return new Results(false, message);
@@ -43,6 +56,10 @@ namespace BookStore.Data.Repositories
         public static Results Success(string message, object entity)
         {
             return new Results(true, entity);
+        }
+        public static Results Success(string message, int count, IEnumerable<object> entity)
+        {
+            return new Results(true, message, count, entity);
         }
     }
 }

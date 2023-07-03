@@ -19,6 +19,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<IBookRepository, BookRepository>();
+builder.Services.AddTransient<IIdentityService, IdentityService>();
 builder.Services.AddScoped<IAppDbContext>(provider => provider.GetService<AppDbContext>());
 
 builder.Services.AddDbContext<AppDbContext>(options =>
