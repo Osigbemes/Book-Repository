@@ -1,9 +1,14 @@
-﻿using BookStore.Data.Interfaces;
+﻿using System.Text;
+using BookStore.Data.Interfaces;
 using BookStore.Data.Models;
 using BookStore.Data.Repositories;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,7 +26,43 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 // Add ASP.NET Core Identity
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders(); ;
+                .AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
+
+// Add cookies as authorization sceheme
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+        .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
+        {
+            options.SlidingExpiration = true;
+            options.ExpireTimeSpan = new TimeSpan(0, 1, 0);
+        });
+
+// configure strongly typed settings objects
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.RequireHttpsMetadata = false;
+    options.SaveToken = true;
+    options.TokenValidationParameters = new TokenValidationParameters()
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration.GetConnectionString("TokenConstants:key"))),
+        ValidIssuer = builder.Configuration.GetConnectionString("Token:issuer"),
+        ValidAudience = builder.Configuration.GetConnectionString("Token:aud"),
+        ValidateLifetime = true,
+        ClockSkew = TimeSpan.Zero
+    };
+    options.Authority = builder.Configuration.GetConnectionString("Token:issuer");
+    options.SaveToken = true;
+    options.Audience = builder.Configuration.GetConnectionString("Token:aud");
+    options.RequireHttpsMetadata = false;
+    options.Configuration = new OpenIdConnectConfiguration();
+});
 
 var app = builder.Build();
 

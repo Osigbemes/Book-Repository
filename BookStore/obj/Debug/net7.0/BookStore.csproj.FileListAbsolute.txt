@@ -85,3 +85,4 @@
 /Users/Osigbemes/Projects/BookStore/BookStore/bin/Debug/net7.0/Microsoft.Extensions.Identity.Stores.dll
 /Users/Osigbemes/Projects/BookStore/BookStore/bin/Debug/net7.0/Microsoft.Extensions.Options.dll
 /Users/Osigbemes/Projects/BookStore/BookStore/bin/Debug/net7.0/Newtonsoft.Json.dll
+/Users/Osigbemes/Projects/BookStore/BookStore/bin/Debug/net7.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll

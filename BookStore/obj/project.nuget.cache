@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "cXTnHF9IC0R4IzeG6ckTk1x+41nF9ezsGOLG4jV4OqvnXjfVmTDEiFI+0+IoJGuu4CfHlnc/rXnf5ofIg6deDA==",
+  "dgSpecHash": "/MHNAW1FcG69n8JmL8ijIffFuChlOgjwo3jCii7Y/PBxog9MRbieHCK2ICdF7A1euiYjYeKNh4EwjIHI8QP12A==",
   "success": true,
   "projectFilePath": "/Users/Osigbemes/Projects/BookStore/BookStore/BookStore.csproj",
   "expectedPackageFiles": [
@@ -12,6 +12,7 @@
     "/Users/Osigbemes/.nuget/packages/microsoft.aspnetcore.authentication.abstractions/2.2.0/microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "/Users/Osigbemes/.nuget/packages/microsoft.aspnetcore.authentication.cookies/2.2.0/microsoft.aspnetcore.authentication.cookies.2.2.0.nupkg.sha512",
     "/Users/Osigbemes/.nuget/packages/microsoft.aspnetcore.authentication.core/2.2.0/microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",
+    "/Users/Osigbemes/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/7.0.8/microsoft.aspnetcore.authentication.jwtbearer.7.0.8.nupkg.sha512",
     "/Users/Osigbemes/.nuget/packages/microsoft.aspnetcore.connections.abstractions/2.2.0/microsoft.aspnetcore.connections.abstractions.2.2.0.nupkg.sha512",
     "/Users/Osigbemes/.nuget/packages/microsoft.aspnetcore.cryptography.internal/7.0.8/microsoft.aspnetcore.cryptography.internal.7.0.8.nupkg.sha512",
     "/Users/Osigbemes/.nuget/packages/microsoft.aspnetcore.cryptography.keyderivation/7.0.8/microsoft.aspnetcore.cryptography.keyderivation.7.0.8.nupkg.sha512",
