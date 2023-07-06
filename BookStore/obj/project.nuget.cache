@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "/MHNAW1FcG69n8JmL8ijIffFuChlOgjwo3jCii7Y/PBxog9MRbieHCK2ICdF7A1euiYjYeKNh4EwjIHI8QP12A==",
+  "dgSpecHash": "eR6RJ+HyBcaWqNaAaxvhxzzwaJrhG7dGLMQp3mPfaiN/Xgm4h/H2hZsaaZ56z8zkURVuX5EYhUun6TRYCxSQmA==",
   "success": true,
   "projectFilePath": "/Users/Osigbemes/Projects/BookStore/BookStore/BookStore.csproj",
   "expectedPackageFiles": [
+    "/Users/Osigbemes/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
+    "/Users/Osigbemes/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/12.0.1/automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "/Users/Osigbemes/.nuget/packages/azure.core/1.24.0/azure.core.1.24.0.nupkg.sha512",
     "/Users/Osigbemes/.nuget/packages/azure.identity/1.6.0/azure.identity.1.6.0.nupkg.sha512",
     "/Users/Osigbemes/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
@@ -43,7 +45,7 @@
     "/Users/Osigbemes/.nuget/packages/microsoft.aspnetcore.server.kestrel.transport.sockets/2.2.0/microsoft.aspnetcore.server.kestrel.transport.sockets.2.2.0.nupkg.sha512",
     "/Users/Osigbemes/.nuget/packages/microsoft.aspnetcore.webutilities/2.2.0/microsoft.aspnetcore.webutilities.2.2.0.nupkg.sha512",
     "/Users/Osigbemes/.nuget/packages/microsoft.bcl.asyncinterfaces/1.1.1/microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
-    "/Users/Osigbemes/.nuget/packages/microsoft.csharp/4.5.0/microsoft.csharp.4.5.0.nupkg.sha512",
+    "/Users/Osigbemes/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/Users/Osigbemes/.nuget/packages/microsoft.data.sqlclient/5.0.2/microsoft.data.sqlclient.5.0.2.nupkg.sha512",
     "/Users/Osigbemes/.nuget/packages/microsoft.data.sqlclient.sni.runtime/5.0.1/microsoft.data.sqlclient.sni.runtime.5.0.1.nupkg.sha512",
     "/Users/Osigbemes/.nuget/packages/microsoft.entityframeworkcore/7.0.8/microsoft.entityframeworkcore.7.0.8.nupkg.sha512",

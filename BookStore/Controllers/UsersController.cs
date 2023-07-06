@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using BookStore.Data.Interfaces;
 using BookStore.Data.Repositories;
 using BookStore.Data.Models;
+using AutoMapper;
+using BookStore.Common;
+using BookStore.ViewModel;
 
 namespace BookStore.Controllers
 {
@@ -15,10 +18,12 @@ namespace BookStore.Controllers
         //private BookRepository books = new BookRepository();
         private readonly IBookRepository _bookRepository;
         private readonly IIdentityService _identityService;
-        public UsersController(IBookRepository bookRepository, IIdentityService identityService)
+        private readonly IMapper _mapper;
+        public UsersController(IBookRepository bookRepository, IIdentityService identityService, IMapper mapper)
         {
             _bookRepository = bookRepository;
             _identityService = identityService;
+            _mapper = mapper;
         }
 
         [HttpPost("register")]
@@ -46,6 +51,7 @@ namespace BookStore.Controllers
                 {
                     return NotFound(user);
                 }
+                user.Entity = _mapper.Map<UserViewModel>(user.Entity);
                 return user;
             }
             catch (Exception ex)
@@ -64,6 +70,7 @@ namespace BookStore.Controllers
                 {
                     return NotFound(user);
                 }
+                user.Entity = _mapper.Map<UserViewModel>(user.Entity);
                 return user;
             }
             catch (Exception ex)
@@ -82,6 +89,7 @@ namespace BookStore.Controllers
                 {
                     return NotFound(users);
                 }
+                users.Entity = _mapper.Map<List<UserViewModel>>(users.Entity);
                 return users;
             }
             catch (Exception ex)
@@ -127,11 +135,6 @@ namespace BookStore.Controllers
             }
         }
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Book>>> GetBooks()
-        {
-            return await _bookRepository.GetBooks();
-        }
     }
 }
 

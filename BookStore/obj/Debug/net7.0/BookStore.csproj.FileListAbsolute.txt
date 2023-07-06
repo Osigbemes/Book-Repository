@@ -86,3 +86,5 @@
 /Users/Osigbemes/Projects/BookStore/BookStore/obj/Debug/net7.0/BookStore.pdb
 /Users/Osigbemes/Projects/BookStore/BookStore/obj/Debug/net7.0/BookStore.genruntimeconfig.cache
 /Users/Osigbemes/Projects/BookStore/BookStore/obj/Debug/net7.0/ref/BookStore.dll
+/Users/Osigbemes/Projects/BookStore/BookStore/bin/Debug/net7.0/AutoMapper.dll
+/Users/Osigbemes/Projects/BookStore/BookStore/bin/Debug/net7.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
