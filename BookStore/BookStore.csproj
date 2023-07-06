@@ -31,4 +31,10 @@
   <ItemGroup>
     <Compile Remove="Models\Book.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="Common\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Common\" />
+  </ItemGroup>
 </Project>

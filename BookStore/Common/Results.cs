@@ -1,5 +1,5 @@
 ﻿using System;
-namespace BookStore.Data.Repositories
+namespace BookStore.Common
 {
 	public class Result
 	{

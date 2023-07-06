@@ -26,16 +26,16 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DBConnection"), b => b.MigrationsAssembly("BookStore")));
 
 // Add ASP.NET Core Identity
-builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddIdentity<User, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
 // Add cookies as authorization sceheme
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-        .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
-        {
-            options.SlidingExpiration = true;
-            options.ExpireTimeSpan = new TimeSpan(0, 1, 0);
-        });
+//builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+//        .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
+//        {
+//            options.SlidingExpiration = true;
+//            options.ExpireTimeSpan = new TimeSpan(0, 1, 0);
+//        });
 
 // configure strongly typed settings objects
 builder.Services.AddAuthentication(options =>
@@ -45,9 +45,8 @@ builder.Services.AddAuthentication(options =>
 })
 .AddJwtBearer(options =>
 {
-    options.RequireHttpsMetadata = false;
-    options.SaveToken = true;
-    options.TokenValidationParameters = new TokenValidationParameters()
+    
+    options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuer = true,
         ValidateAudience = true,

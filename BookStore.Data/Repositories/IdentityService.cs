@@ -16,71 +16,114 @@ namespace BookStore.Data.Repositories
             _appDbContext = appDbContext;
 		}
 
-        public async Task<Results> CreateUser(User user)
+        public async Task<Result> CreateUser(User user)
         {
             try
             {
+                var password = user.Password;
+
                 var createdUser = await _userManager.CreateAsync(user, user.Password);
+                await _appDbContext.SaveChangesAsync();
                 if (!createdUser.Succeeded)
                 {
-                    return Results.Failure("Unable to create user.");
+                    return Result.Failure($"Unable to create user.{createdUser.Errors.First().Code+ createdUser.Errors.First().Description}");
                 }
-                return Results.Success("User created successfully!", createdUser);
+                return Result.Success("User created successfully!", user);
             }
             catch (Exception ex)
             {
-                return Results.Failure($"Failure creating user. {ex}");
+                return Result.Failure($"Failure creating user. {ex}");
             }
         }
 
-        public async Task<Results> GetUser(string userId)
+        public async Task<Result> DeleteUser(string userId)
+        {
+            try
+            {
+                var userObject = await _userManager.FindByIdAsync(userId);
+                if (userObject == null)
+                {
+                    return Result.Failure($"No user found");
+                }
+                await _userManager.DeleteAsync(userObject);
+                return Result.Success("User deleted successfully!");
+            }
+            catch (Exception ex)
+            {
+                return Result.Failure($"Failure deleting user. {ex}");
+            }
+        }
+
+        public async Task<Result> GetUser(string userId)
         {
             try
             {
                 var userObject = await _userManager.FindByIdAsync(userId);
                 if (userObject==null)
                 {
-                    return Results.Failure("No user found");
+                    return Result.Failure("No user found");
                 }
-                return Results.Success("User retrieved successfully!", userObject);
+                return Result.Success("User retrieved successfully!", userObject);
             }
             catch (Exception ex)
             {
-                return Results.Failure($"Failure retrieving user. {ex}");
+                return Result.Failure($"Failure retrieving user. {ex}");
             }
         }
 
-        public async Task<Results> GetUserByEmail(string email)
+        public async Task<Result> GetUserByEmail(string email)
         {
             try
             {
                 var user = await _userManager.FindByEmailAsync(email);
                 if (user==null)
                 {
-                    return Results.Failure($"User with email {email} does not exist.");
+                    return Result.Failure($"User with email {email} does not exist.");
                 }
-                return Results.Success(user);
+                return Result.Success(user);
             }
             catch (Exception ex)
             {
-                return Results.Failure($"Failure retrieving user. {ex}");
+                return Result.Failure($"Failure retrieving user. {ex}");
             }
         }
 
-        public async Task<Results> GetUsers(User user)
+        public async Task<Result> GetUsers()
         {
             try
             {
                 var usersObject = await _userManager.Users.ToListAsync();
                 if (usersObject.Count<=0 || usersObject==null)
                 {
-                    return Results.Failure("No user found.");
+                    return Result.Failure("No user found.");
                 }
-                return Results.Success("User retrieved successfully!", usersObject.Count, usersObject);
+                return Result.Success("User retrieved successfully!", usersObject.Count, usersObject);
             }
             catch (Exception ex)
             {
-                return Results.Failure($"Failure creating user. {ex}");
+                return Result.Failure($"Failure creating user. {ex}");
+            }
+        }
+
+        public async Task<Result> UpdateUser(string userId, User user)
+        {
+            try
+            {
+                var getUserObject = await _userManager.FindByIdAsync(userId);
+                if (getUserObject==null)
+                {
+                    return Result.Failure("User does not exist");
+                }
+                getUserObject.UserName = user.UserName;
+                getUserObject.PhoneNumber = user.PhoneNumber;
+                getUserObject.LastModifiedDate = DateTime.Now;
+                await _userManager.UpdateAsync(getUserObject);
+                await _appDbContext.SaveChangesAsync();
+                return Result.Success("User updated successfully!", getUserObject);
+            }
+            catch (Exception ex)
+            {
+                return Result.Failure($"Failure updating user. {ex}");
             }
         }
     }
